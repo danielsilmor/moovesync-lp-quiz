@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz para gestores | MooveSync</title>
+  <meta name="description" content="Responda ao quiz em apenas 5 minutos e avalie como a sua gestão de pessoas atende aos desafios da empresa. Receba uma avaliação gratuita e especializada da MooveSync.">
+  <meta name="theme-color" content="#1E2749">
+  <!-- Prévia para aprovação: fora das buscas. REMOVER esta linha no lançamento. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Open Graph: prévia ao compartilhar o link.
+       TODO: quando a LP tiver endereço, incluir og:url e usar o endereço completo em og:image -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="MooveSync">
+  <meta property="og:title" content="Teste agora suas decisões como gestor | MooveSync">
+  <meta property="og:description" content="Responda ao quiz em apenas 5 minutos e receba uma avaliação gratuita e especializada das suas escolhas.">
+  <meta property="og:image" content="assets/img/hero-fundo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonte: Rubik, a mesma do site (pesos 300, 400, 500 e 700) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Marca que o JS está ativo antes da pintura (evita piscar nas animações de entrada) -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <!-- ===================================================================
+       DOBRA 1 — Cabeçalho + Hero
+       =================================================================== -->
+  <header class="cabecalho">
+
+    <div class="cabecalho__barra">
+      <nav class="navegacao" aria-label="Menu principal">
+        <a class="navegacao__logo" href="https://moovesync.com.br/" aria-label="MooveSync — ir para o site">
+          <img src="assets/img/logo-moovesync.png" alt="MooveSync" width="180" height="23">
+        </a>
+
+        <a class="botao botao--pequeno navegacao__cta" href="#formulario">Responder ao quiz</a>
+      </nav>
+    </div>
+
+    <div class="hero">
+      <div class="hero__conteudo">
+        <h1 class="hero__titulo">Teste agora suas decisões como gestor</h1>
+
+        <p class="hero__texto">Responda ao quiz em apenas 5 minutos e avalie como a sua gestão de pessoas atende aos desafios da empresa. Ao final, receba seus resultados em um material completo, com:</p>
+
+        <ul class="hero__lista">
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor" fill-opacity="0.18"/><path d="m7.8 12.3 2.7 2.7 5.7-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Avaliação gratuita e especializada das suas escolhas;
+          </li>
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor" fill-opacity="0.18"/><path d="m7.8 12.3 2.7 2.7 5.7-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Insights para ampliar suas perspectivas;
+          </li>
+          <li>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor" fill-opacity="0.18"/><path d="m7.8 12.3 2.7 2.7 5.7-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Dicas para transformar dados em decisões mais assertivas.
+          </li>
+        </ul>
+
+        <a class="botao botao--seta hero__cta" href="#formulario">
+          Responder ao quiz
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.2 10h11.6M10 4.2l5.8 5.8-5.8 5.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Ilustração (decorativa): o gestor dentro de um quadro, com cartões que
+           simulam a interface do quiz sobrepostos. Desenhada em 560 × 600 px. -->
+      <div class="hero__visual" aria-hidden="true">
+        <div class="quiz-ui">
+
+          <!-- Quadro verde-água com o gestor (a cabeça sai por cima do quadro) -->
+          <div class="quiz-ui__quadro">
+            <picture>
+              <source media="(min-width: 600px)" srcset="assets/img/hero-gestor.png" width="900" height="1117">
+              <img class="quiz-ui__pessoa" src="assets/img/hero-gestor-mobile.png" alt="" width="520" height="646">
+            </picture>
+          </div>
+
+          <!-- Cartão da pergunta -->
+          <div class="quiz-ui__cartao quiz-ui__pergunta">
+            <div class="quiz-ui__pergunta-topo">
+              <span class="quiz-ui__etiqueta">Pergunta 4</span>
+              <span class="quiz-ui__passos"><i class="feito"></i><i class="feito"></i><i class="feito"></i><i class="atual"></i><i></i><i></i></span>
+            </div>
+            <p class="quiz-ui__pergunta-texto">O engajamento da equipe caiu. Qual é o seu primeiro passo?</p>
+            <ul class="quiz-ui__opcoes">
+              <li><span class="quiz-ui__radio"></span>Reforçar as metas do time</li>
+              <li class="quiz-ui__opcao--marcada"><span class="quiz-ui__radio"></span>Ouvir o time e analisar os dados</li>
+              <li><span class="quiz-ui__radio"></span>Aguardar o próximo ciclo</li>
+            </ul>
+          </div>
+
+          <!-- Cartão do resultado (gráfico) -->
+          <div class="quiz-ui__cartao quiz-ui__resultado">
+            <p class="quiz-ui__resultado-titulo">Sua avaliação</p>
+            <div class="quiz-ui__barras">
+              <span style="--altura: 55%"></span>
+              <span style="--altura: 90%"></span>
+              <span style="--altura: 40%"></span>
+              <span style="--altura: 70%"></span>
+            </div>
+            <span class="quiz-ui__linha"></span>
+            <span class="quiz-ui__linha quiz-ui__linha--curta"></span>
+          </div>
+
+          <!-- Selo de insight -->
+          <span class="quiz-ui__selo">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+
+          <!-- Cartão do progresso -->
+          <div class="quiz-ui__cartao hero__cartao">
+            <span class="hero__cartao-icone">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13.5" r="7.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 10v3.8l2.4 1.6M10 3h4M12 3v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="hero__cartao-conteudo">
+              <p class="hero__cartao-titulo">Quiz gratuito</p>
+              <span class="hero__cartao-barra"><span></span></span>
+              <p class="hero__cartao-texto">Não leva mais do que 5 minutos</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+  <main>
+
+    <!-- ===================================================================
+         DOBRA 2 — Por que responder ao quiz?
+         =================================================================== -->
+    <section class="secao motivos" id="por-que">
+      <div class="motivos__container">
+
+        <div class="motivos__cabecalho revelar">
+          <p class="rotulo rotulo--centro">Benefícios</p>
+          <h2 class="titulo-secao">Por que responder ao quiz?</h2>
+        </div>
+
+        <ul class="motivos__lista">
+          <li class="motivo revelar">
+            <div class="motivo__topo">
+              <span class="motivo__icone">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><path d="m15.5 8.5 4-4M17 4.5h2.5V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="motivo__numero" aria-hidden="true">01</span>
+            </div>
+            <h3 class="motivo__titulo">Identificar oportunidades de melhoria na sua gestão</h3>
+            <p class="motivo__texto">Reflita sobre suas decisões a partir de situações e desafios da rotina empresarial.</p>
+          </li>
+
+          <li class="motivo revelar">
+            <div class="motivo__topo">
+              <span class="motivo__icone">
+                <svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true"><path d="M15 20v6.25M20 18.3v7.95M25 13.32v12.93M27.5 3.75 16.69 14.56a.63.63 0 0 1-.88 0l-4.12-4.12a.63.63 0 0 0-.88 0L2.5 18.75M5 23.08v3.17M10 18.32v7.93" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="motivo__numero" aria-hidden="true">02</span>
+            </div>
+            <h3 class="motivo__titulo">Ampliar sua leitura de dados</h3>
+            <p class="motivo__texto">Um mesmo dado pode levar a diferentes interpretações. Você sabe o que considerar antes de chegar a uma conclusão?</p>
+          </li>
+
+          <li class="motivo revelar">
+            <div class="motivo__topo">
+              <span class="motivo__icone">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+              </span>
+              <span class="motivo__numero" aria-hidden="true">03</span>
+            </div>
+            <h3 class="motivo__titulo">Explorar novos pontos de vista</h3>
+            <p class="motivo__texto">Conheça outras possibilidades para lidar com os desafios da sua empresa.</p>
+          </li>
+
+          <li class="motivo motivo--destaque revelar">
+            <div class="motivo__topo">
+              <span class="motivo__icone">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 3.5h6a1 1 0 0 1 1 1V6H8V4.5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 5h2a1.5 1.5 0 0 1 1.5 1.5v13A1.5 1.5 0 0 1 18 21H6a1.5 1.5 0 0 1-1.5-1.5v-13A1.5 1.5 0 0 1 6 5h2" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m8.8 13.4 2.2 2.2 4.3-4.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="motivo__numero" aria-hidden="true">04</span>
+            </div>
+            <h3 class="motivo__titulo">Receber uma análise especializada da MooveSync</h3>
+            <p class="motivo__texto">Saiba como conectar dados, necessidades de desenvolvimento e objetivos do negócio.</p>
+          </li>
+        </ul>
+
+        <a class="botao botao--seta motivos__cta revelar" href="#formulario">
+          Responder ao quiz
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.2 10h11.6M10 4.2l5.8 5.8-5.8 5.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         FORMULÁRIO — acesso ao quiz
+         =================================================================== -->
+    <section class="secao inscricao" id="formulario">
+      <div class="inscricao__container">
+
+        <div class="inscricao__intro revelar">
+          <p class="rotulo">Quiz gratuito</p>
+          <h2 class="inscricao__titulo">Preencha o formulário para acessar o quiz e receber sua avaliação gratuita!</h2>
+          <ul class="inscricao__destaques">
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Apenas 5 minutos
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="m8.5 12.2 2.4 2.4 4.6-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Avaliação gratuita
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.5h8l4 4v13H6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3.5v4h4M9 13h6M9 16.5h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Resultados em um material completo
+            </li>
+          </ul>
+        </div>
+
+        <!-- Validado pelo js/script.js (novalidate desliga os balões do navegador).
+             TODO: data-endpoint = endereço que recebe os dados (RD Station, webhook etc.)
+                   data-quiz-url = endereço do quiz (a pessoa é levada para lá depois do cadastro) -->
+        <form class="cartao inscricao__formulario js-formulario" action="#" method="post" novalidate data-endpoint="" data-quiz-url="">
+
+          <!-- Campo isca: invisível para pessoas; se vier preenchido, é robô -->
+          <div class="visualmente-oculto" aria-hidden="true">
+            <label for="quiz-site">Não preencha este campo</label>
+            <input id="quiz-site" name="site" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="inscricao__campos">
+            <div class="inscricao__campo">
+              <label class="inscricao__rotulo" for="quiz-nome">Nome completo</label>
+              <input class="campo" id="quiz-nome" name="nome" type="text" placeholder="Seu nome completo" autocomplete="name" required aria-describedby="quiz-nome-erro">
+              <p class="campo-erro" id="quiz-nome-erro"></p>
+            </div>
+            <div class="inscricao__campo">
+              <label class="inscricao__rotulo" for="quiz-email">E-mail corporativo</label>
+              <input class="campo" id="quiz-email" name="email" type="email" placeholder="nome@empresa.com.br" autocomplete="email" required data-corporativo aria-describedby="quiz-email-erro">
+              <p class="campo-erro" id="quiz-email-erro"></p>
+            </div>
+            <div class="inscricao__campo">
+              <label class="inscricao__rotulo" for="quiz-empresa">Empresa</label>
+              <input class="campo" id="quiz-empresa" name="empresa" type="text" placeholder="Nome da empresa" autocomplete="organization" required aria-describedby="quiz-empresa-erro">
+              <p class="campo-erro" id="quiz-empresa-erro"></p>
+            </div>
+            <div class="inscricao__campo">
+              <label class="inscricao__rotulo" for="quiz-cargo">Cargo</label>
+              <input class="campo" id="quiz-cargo" name="cargo" type="text" placeholder="Seu cargo" autocomplete="organization-title" required aria-describedby="quiz-cargo-erro">
+              <p class="campo-erro" id="quiz-cargo-erro"></p>
+            </div>
+          </div>
+
+          <div class="inscricao__aceite">
+            <label class="consentimento" for="quiz-autorizo">
+              <input class="consentimento__caixa" id="quiz-autorizo" name="autorizo" type="checkbox" value="sim" required aria-describedby="quiz-autorizo-erro">
+              <span>Autorizo a MooveSync a enviar o resultado e entrar em contato sobre conteúdos e soluções para minha empresa.</span>
+            </label>
+            <p class="campo-erro" id="quiz-autorizo-erro"></p>
+          </div>
+
+          <button class="botao botao--seta inscricao__botao" type="submit" data-texto-enviando="Enviando…">
+            <span>Responder ao quiz</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4.2 10h11.6M10 4.2l5.8 5.8-5.8 5.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <!-- Alertas em cápsula (aparecem depois do envio) — mesmo padrão do site -->
+          <div class="alerta alerta--sucesso js-alerta-sucesso" role="status" hidden>
+            <span class="alerta__icone"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="m8.5 12.2 2.4 2.4 4.6-4.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="alerta__conteudo">
+              <p class="alerta__titulo">Cadastro recebido!</p>
+              <p class="alerta__texto js-alerta-sucesso-texto">Tudo pronto para você começar o quiz.</p>
+            </div>
+            <button class="alerta__fechar" type="button" aria-label="Fechar aviso"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          </div>
+          <div class="alerta alerta--erro js-alerta-erro" role="alert" hidden>
+            <span class="alerta__icone"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10.3 4.2 2.9 17a2 2 0 0 0 1.7 3h14.8a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 9.5v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.6" r="1.1" fill="currentColor"/></svg></span>
+            <div class="alerta__conteudo">
+              <p class="alerta__titulo">Não foi possível enviar</p>
+              <p class="alerta__texto">Verifique sua conexão e tente novamente em instantes.</p>
+            </div>
+            <button class="alerta__fechar" type="button" aria-label="Fechar aviso"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          </div>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         DOBRA 3 — Conheça a MooveSync
+         =================================================================== -->
+    <section class="secao conheca" id="conheca">
+      <div class="conheca__container">
+
+        <div class="conheca__midia revelar">
+          <img class="conheca__imagem" src="assets/img/moovesync-workshop.jpg" alt="Facilitadora conduz uma conversa com um grupo de gestores sentados em semicírculo" width="1200" height="896" loading="lazy">
+          <p class="conheca__selo">
+            <strong>+10 anos</strong>
+            <span>desenvolvendo pessoas e culturas organizacionais</span>
+          </p>
+        </div>
+
+        <div class="conheca__conteudo revelar">
+          <p class="rotulo rotulo--claro">Quem somos</p>
+          <h2 class="titulo-secao">Conheça a MooveSync</h2>
+          <div class="texto-secao">
+            <p>Há mais de 10 anos, desenvolvemos pessoas para criar culturas organizacionais que cuidam, inspiram e entregam. Unimos inteligência humana e de dados para criar soluções sob medida e orientadas para gerar resultados.</p>
+            <p>Contamos com o <strong>Observatório de Dados e Estratégia</strong>, um ecossistema que combina pesquisa, dados, tecnologia e IA para compreender contextos, identificar prioridades e orientar decisões. Assim, desenvolvemos trilhas de aprendizagem e desenvolvimento com metodologias ativas, que unem profundidade e prática e respeitam a cultura, o momento e as necessidades de cada organização.</p>
+          </div>
+          <a class="botao botao--azul" href="https://moovesync.com.br/" target="_blank" rel="noopener noreferrer" aria-label="Saiba mais sobre a MooveSync (abre o site em nova aba)">Saiba mais</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================
+       RODAPÉ — idêntico ao do site moovesync.com.br
+       =================================================================== -->
+  <footer class="rodape">
+    <div class="rodape__container">
+
+      <!-- Coluna 1: marca e contatos -->
+      <div class="rodape__coluna rodape__coluna--marca">
+        <div class="rodape__marca">
+          <img src="assets/img/logo-moovesync-rodape.png" alt="MooveSync" width="210" height="27" loading="lazy">
+          <p class="rodape__slogan">Desenvolvendo pessoas para criar culturas organizacionais que cuidam, inspiram e entregam.</p>
+        </div>
+
+        <ul class="rodape__contatos">
+          <li>
+            <a class="rodape__contato" href="mailto:contato@moovesync.com.br">
+              <img src="assets/icons/icone-email.svg" alt="" width="20" height="20" loading="lazy">
+              <span>contato@<wbr>moovesync.com.br</span>
+            </a>
+          </li>
+          <li>
+            <!-- Abre uma conversa no WhatsApp (app no celular, WhatsApp Web no computador) -->
+            <a class="rodape__contato" href="https://wa.me/5531984796233" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (31) 98479-6233 (abre em nova aba)">
+              <img src="assets/icons/icone-telefone.svg" alt="" width="20" height="20" loading="lazy">
+              (31) 98479-6233
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Coluna 2: conteúdos e redes -->
+      <div class="rodape__coluna">
+        <p class="rodape__titulo">
+          Continue aprendendo com a MooveSync
+          <span class="rodape__subtitulo">Acompanhe nossos conteúdos:</span>
+        </p>
+
+        <div class="rodape__conteudos">
+          <a class="botao botao--contorno-agua" href="https://moovesync.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
+        </div>
+
+        <div class="rodape__redes">
+          <p class="rodape__texto">Acompanhe nossas redes:</p>
+          <ul class="rodape__redes-lista">
+            <li>
+              <a class="rodape__rede" href="https://www.instagram.com/moovesync/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Moove (abre em nova aba)">
+                <img src="assets/icons/icone-instagram.svg" alt="" width="28" height="28" loading="lazy">
+              </a>
+            </li>
+            <li>
+              <a class="rodape__rede" href="https://www.linkedin.com/company/moovesync/posts/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn da Moove (abre em nova aba)">
+                <img src="assets/icons/icone-linkedin.svg" alt="" width="28" height="28" loading="lazy">
+              </a>
+            </li>
+            <li>
+              <a class="rodape__rede" href="https://www.facebook.com/moovedesenvolvimento" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Moove (abre em nova aba)">
+                <img src="assets/icons/icone-facebook.svg" alt="" width="28" height="28" loading="lazy">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

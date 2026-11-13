@@ -1,0 +1,1653 @@
+/* ==========================================================================
+   MooveSync — LP "Teste agora suas decisões como gestor" (1676.3)
+   Mobile-first: o estilo base é para celular; os @media (min-width) ajustam
+   para telas maiores. Tokens, botões, campos, menu e rodapé vêm do tema do
+   site (1647.3 MVE Site), para manter a mesma identidade.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Variáveis (as mesmas do site)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Cores */
+  --cor-azul: #1E2749;               /* Visual/Blue */
+  --cor-azul-acinzentado: #414865;   /* Visual/Grey Blue */
+  --cor-azul-claro: #C1C7E0;         /* Visual/Grey Blue Light */
+  --cor-azul-muito-claro: #EDEFF7;   /* Visual/Grey Blue Very Light */
+  --cor-agua: #6BC0AC;               /* Visual/Aqcua */
+  --cor-verde: #54B047;              /* Visual/Gree */
+  --cor-verde-escuro: #399A44;       /* Dark Green */
+  --cor-branco: #FFFFFF;
+  --cor-cinza-20: #333333;
+  --cor-erro: #B42318;
+
+  /* Alertas em cápsula do formulário */
+  --alerta-sucesso-fundo: #E3F6E5;
+  --alerta-sucesso-borda: #A8DDB0;
+  --alerta-sucesso-forte: #1E7A2E;
+  --alerta-sucesso-texto: #2F6B39;
+  --alerta-erro-fundo: #FDECEE;
+  --alerta-erro-borda: #F3B7BF;
+  --alerta-erro-forte: var(--cor-erro);
+  --alerta-erro-texto: #8A2A22;
+
+  /* Tipografia — família única */
+  --fonte: 'Rubik', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --peso-light: 300;
+  --peso-regular: 400;
+  --peso-medium: 500;
+  --peso-bold: 700;
+
+  --texto-12: 0.75rem;
+  --texto-14: 0.875rem;
+  --texto-16: 1rem;
+  --texto-18: 1.125rem;
+  --texto-20: 1.25rem;
+  --texto-24: 1.5rem;
+  --texto-32: 2rem;
+  --texto-36: 2.25rem;
+  --texto-40: 2.5rem;
+  --texto-48: 3rem;
+  --texto-60: 3.75rem;
+
+  --linha-justa: 1;
+  --linha-titulo: 1.2;
+  --linha-media: 1.4;
+  --linha-texto: 1.6;
+  --linha-28: 28px;
+
+  --letra-titulo: -0.02em;
+
+  /* Espaçamentos */
+  --espaco-5: 5px;
+  --espaco-8: 8px;
+  --espaco-10: 10px;
+  --espaco-16: 16px;
+  --espaco-24: 24px;
+  --espaco-32: 32px;
+  --espaco-48: 48px;
+  --espaco-64: 64px;
+  --espaco-80: 80px;
+  --espaco-120: 120px;
+
+  --secao-vertical: var(--espaco-80);
+  --secao-lateral: 20px;
+
+  /* Larguras */
+  --largura-cabecalho: 1280px;
+  --largura-conteudo: 1216px;
+  --largura-larga: 1024px;
+  --largura-estreita: 768px;
+
+  /* Raios */
+  --raio-16: 16px;
+  --raio-28: 28px;
+  --raio-32: 32px;
+  --raio-50: 50px;
+  --raio-55: 55px;
+  --raio-redondo: 100px;
+
+  --sombra-menu: 0 0 30px rgba(39, 47, 80, 0.2);
+  --sombra-cartao: 0 20px 50px rgba(30, 39, 73, 0.18);
+
+  --borda-verde: 1.5px solid var(--cor-verde);
+  --borda-agua: 1px solid var(--cor-agua);
+  --borda-azul-claro: 1px solid var(--cor-azul-claro);
+
+  --transicao: 0.2s ease;
+  --curva-suave: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --secao-lateral: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --secao-vertical: var(--espaco-120);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Reset leve
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* a seção não fica escondida atrás do menu fixo */
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+img,
+svg,
+picture {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Tipografia base
+   -------------------------------------------------------------------------- */
+body {
+  font-family: var(--fonte);
+  font-weight: var(--peso-regular);
+  font-size: var(--texto-16);
+  line-height: var(--linha-28);
+  color: var(--cor-azul-acinzentado);
+  background-color: var(--cor-branco);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--cor-azul);
+  font-weight: var(--peso-light);
+  line-height: var(--linha-titulo);
+  letter-spacing: var(--letra-titulo);
+}
+
+strong {
+  font-weight: var(--peso-medium);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cor-verde);
+  outline-offset: 3px;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Layout e utilitários
+   -------------------------------------------------------------------------- */
+.secao {
+  padding: var(--secao-vertical) var(--secao-lateral);
+}
+
+/* Como no site: seções (menos o hero) com 96% de opacidade sobre o branco */
+.secao,
+.rodape {
+  opacity: 0.96;
+}
+
+.visualmente-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Entrada suave ao rolar (o JS coloca .esta-visivel). Sem JS, tudo aparece normalmente. */
+.js .revelar {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.8s var(--curva-suave);
+  transition-delay: var(--atraso, 0s);
+}
+
+.js .revelar.esta-visivel {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Componentes (iguais aos do site)
+   -------------------------------------------------------------------------- */
+
+/* Botão em pílula verde-escuro */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espaco-10);
+  padding: var(--espaco-10) 30px;
+  border-radius: var(--raio-55);
+  background-color: var(--cor-verde-escuro);
+  color: var(--cor-branco);
+  font-size: var(--texto-16);
+  line-height: 24px;
+  text-align: center;
+  white-space: nowrap;
+  transition: background-color var(--transicao), color var(--transicao), border-color var(--transicao), box-shadow var(--transicao);
+}
+
+.botao:hover {
+  background-color: var(--cor-verde);
+}
+
+.botao--pequeno {
+  padding: var(--espaco-10) 20px;
+  font-size: var(--texto-14);
+  line-height: var(--linha-media);
+}
+
+/* Botão com seta que avança no hover */
+.botao--seta svg {
+  flex-shrink: 0;
+  transition: transform 0.25s var(--curva-suave);
+}
+
+.botao--seta:hover svg {
+  transform: translateX(4px);
+}
+
+/* Botão azul (sobre o fundo verde-água) */
+.botao--azul {
+  background-color: var(--cor-azul);
+}
+
+.botao--azul:hover {
+  background-color: var(--cor-azul-acinzentado);
+}
+
+/* Botões água do rodapé */
+.botao--agua,
+.botao--contorno-agua {
+  padding: 5px 24px;
+  border: 1px solid var(--cor-agua);
+  font-size: var(--texto-16);
+  line-height: var(--linha-28);
+}
+
+.botao--agua {
+  background-color: var(--cor-agua);
+  color: var(--cor-cinza-20);
+}
+
+.botao--agua:hover {
+  background-color: transparent;
+  color: var(--cor-agua);
+}
+
+.botao--contorno-agua {
+  background-color: transparent;
+  color: var(--cor-agua);
+}
+
+.botao--contorno-agua:hover {
+  background-color: var(--cor-agua);
+  color: var(--cor-cinza-20);
+}
+
+.botao[aria-busy="true"] {
+  opacity: 0.75;
+  cursor: progress;
+}
+
+/* Rótulo da seção: traço verde-água em cima + texto pequeno */
+.rotulo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--cor-azul);
+  font-size: var(--texto-16);
+  line-height: 20px;
+}
+
+.rotulo::before {
+  content: "";
+  width: 48px;
+  height: 3px;
+  border-bottom-right-radius: 3px;
+  background-color: var(--cor-agua);
+}
+
+.rotulo--claro::before {
+  background-color: var(--cor-branco);
+}
+
+.rotulo--centro {
+  align-items: center;
+}
+
+/* Título padrão das seções: 40px no celular, 48px no desktop */
+.titulo-secao {
+  font-size: var(--texto-40);
+  line-height: 1.1;
+}
+
+.texto-secao {
+  font-size: var(--texto-16);
+  line-height: var(--linha-texto);
+}
+
+.texto-secao p + p {
+  margin-top: 1.2em;
+}
+
+@media (min-width: 768px) {
+  .titulo-secao {
+    font-size: var(--texto-48);
+    line-height: var(--linha-justa);
+  }
+
+  .texto-secao {
+    font-size: var(--texto-18);
+  }
+}
+
+/* Cartão branco com borda azul-clara */
+.cartao {
+  padding: var(--espaco-32);
+  border: var(--borda-azul-claro);
+  border-radius: var(--raio-32);
+  background-color: var(--cor-branco);
+}
+
+/* Campo em pílula (fundo cinza-azulado) */
+.campo {
+  width: 100%;
+  height: 48px;
+  padding: var(--espaco-10) var(--espaco-24);
+  border: 1px solid transparent;
+  border-radius: var(--raio-50);
+  background-color: var(--cor-azul-muito-claro);
+  color: var(--cor-azul);
+  font-size: var(--texto-14);
+  line-height: var(--linha-28);
+  transition: border-color var(--transicao), background-color var(--transicao);
+}
+
+.campo::placeholder {
+  color: var(--cor-azul-acinzentado);
+  opacity: 1;
+}
+
+.campo:focus {
+  border-color: var(--cor-agua);
+  background-color: var(--cor-branco);
+  outline: none;
+}
+
+.campo:focus-visible {
+  outline: 2px solid var(--cor-verde);
+  outline-offset: 2px;
+}
+
+.campo[aria-invalid="true"] {
+  border-color: var(--cor-erro);
+}
+
+.campo-erro {
+  padding-left: var(--espaco-24);
+  color: var(--cor-erro);
+  font-size: var(--texto-14);
+  line-height: var(--linha-media);
+}
+
+.campo-erro:empty {
+  display: none;
+}
+
+/* Alerta em cápsula (sucesso / erro) abaixo do botão */
+.alerta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px 10px 14px;
+  border: 1px solid;
+  border-radius: 28px;
+  text-align: left;
+  animation: alerta-entrada 0.25s ease;
+}
+
+.alerta[hidden] {
+  display: none;
+}
+
+.alerta__icone {
+  flex-shrink: 0;
+  display: flex;
+}
+
+.alerta__conteudo {
+  flex: 1;
+  min-width: 0;
+}
+
+.alerta__titulo {
+  font-weight: var(--peso-medium);
+  font-size: var(--texto-14);
+  line-height: 18px;
+}
+
+.alerta__texto {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.alerta__texto a {
+  font-weight: var(--peso-medium);
+  text-decoration: underline;
+}
+
+.alerta__fechar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: inherit;
+  transition: background-color var(--transicao);
+}
+
+.alerta__fechar:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.alerta--sucesso {
+  border-color: var(--alerta-sucesso-borda);
+  background-color: var(--alerta-sucesso-fundo);
+  color: var(--alerta-sucesso-texto);
+}
+
+.alerta--sucesso .alerta__icone,
+.alerta--sucesso .alerta__titulo {
+  color: var(--alerta-sucesso-forte);
+}
+
+.alerta--erro {
+  border-color: var(--alerta-erro-borda);
+  background-color: var(--alerta-erro-fundo);
+  color: var(--alerta-erro-texto);
+}
+
+.alerta--erro .alerta__icone,
+.alerta--erro .alerta__titulo {
+  color: var(--alerta-erro-forte);
+}
+
+@keyframes alerta-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@media (min-width: 768px) {
+  .alerta {
+    border-radius: 999px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Dobra 1 — Cabeçalho + Hero
+   -------------------------------------------------------------------------- */
+
+/* Celular/tablet: degradê vertical; um véu azul no topo garante contraste do texto branco */
+.cabecalho {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 0;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(30, 39, 73, 0.45) 0%, rgba(30, 39, 73, 0.1) 45%, rgba(30, 39, 73, 0) 70%),
+    var(--cor-azul) url("../assets/img/hero-fundo-mobile.jpg") center top / cover no-repeat;
+}
+
+/* Espaço reservado para a pílula do menu (fixa no topo da tela) */
+.cabecalho__barra {
+  flex-shrink: 0;
+  height: 60px;
+}
+
+/* Pílula branca do menu: fixa, acompanha a rolagem */
+.navegacao {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-16);
+  width: min(100% - 40px, var(--largura-cabecalho));
+  padding: var(--espaco-10);
+  transform: translateX(-50%);
+  border-radius: var(--raio-redondo);
+  background-color: var(--cor-branco);
+  box-shadow: 0 0 15px rgba(39, 47, 80, 0.2);
+}
+
+.navegacao__logo {
+  flex-shrink: 0;
+  padding: var(--espaco-5) 12px 0;
+}
+
+.navegacao__logo img {
+  width: 126px;
+  height: auto;
+}
+
+.navegacao__cta {
+  padding-inline: 16px;
+}
+
+@media (min-width: 400px) {
+  .navegacao__logo {
+    padding-inline: 20px;
+  }
+
+  .navegacao__logo img {
+    width: 150px;
+  }
+
+  .navegacao__cta {
+    padding-inline: 20px;
+  }
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espaco-48);
+  /* tamanho da ilustração do quiz (desenhada em 560 × 600 px) */
+  --escala: 0.62;
+}
+
+.hero__conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espaco-24);
+  width: 100%;
+  max-width: 640px;
+  padding-top: var(--espaco-48);
+  text-align: center;
+}
+
+.hero__titulo {
+  color: var(--cor-branco);
+  font-size: clamp(2.25rem, 7vw + 0.6rem, 2.75rem);
+  line-height: 1.08;
+}
+
+.hero__texto {
+  color: var(--cor-branco);
+  font-weight: var(--peso-light);
+  font-size: var(--texto-16);
+  line-height: 1.6;
+}
+
+/* Lista com os 3 itens do material */
+.hero__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+}
+
+.hero__lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--cor-branco);
+  font-size: var(--texto-16);
+  line-height: 1.5;
+}
+
+.hero__lista svg {
+  flex-shrink: 0;
+  color: var(--cor-agua);
+}
+
+.hero__cta {
+  padding: 12px 32px;
+  font-size: var(--texto-18);
+  line-height: var(--linha-28);
+  box-shadow: 0 10px 30px rgba(57, 154, 68, 0.35);
+}
+
+/* Entrada do conteúdo do hero, um item depois do outro */
+.hero__conteudo > * {
+  animation: subir 0.8s var(--curva-suave) both;
+}
+
+.hero__conteudo > :nth-child(2) { animation-delay: 0.08s; }
+.hero__conteudo > :nth-child(3) { animation-delay: 0.16s; }
+.hero__conteudo > :nth-child(4) { animation-delay: 0.24s; }
+
+
+/* ---------- Ilustração da interface do quiz ----------
+   Montada em 560 × 600 px e reduzida com --escala (o texto dos cartões é decorativo). */
+.hero__visual {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(560px * var(--escala));
+  height: calc(600px * var(--escala));
+}
+
+.quiz-ui {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 560px;
+  height: 600px;
+  transform: scale(var(--escala));
+  transform-origin: 0 0;
+}
+
+/* Quadro na cor do rodapé; a cabeça do gestor sai por cima */
+.quiz-ui__quadro {
+  position: absolute;
+  right: 10px;
+  bottom: 70px;
+  width: 340px;
+  height: 450px;
+  border-radius: 28px;
+  background-color: var(--cor-azul);
+  box-shadow: 0 30px 60px rgba(10, 16, 40, 0.35);
+  animation: subir 1s 0.1s var(--curva-suave) both;
+}
+
+/* A foto é mais larga que o quadro: corta nas laterais e embaixo (cantos arredondados),
+   mas deixa a cabeça passar por cima */
+.quiz-ui__pessoa {
+  position: absolute;
+  left: -40px;
+  bottom: 0;
+  width: 420px;
+  max-width: none;
+  clip-path: inset(-80px 40px 0 40px round 0 0 28px 28px);
+}
+
+/* Cartões brancos da interface */
+.quiz-ui__cartao {
+  position: absolute;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.97);
+  box-shadow: var(--sombra-cartao);
+  color: var(--cor-azul);
+}
+
+/* Pergunta com alternativas */
+.quiz-ui__pergunta {
+  left: 0;
+  bottom: 290px;
+  width: 292px;
+  padding: 18px;
+  animation: subir 0.8s 0.35s var(--curva-suave) both, flutuar 7s 1.4s ease-in-out infinite;
+}
+
+.quiz-ui__pergunta-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.quiz-ui__etiqueta {
+  padding: 3px 10px;
+  border-radius: var(--raio-redondo);
+  background-color: var(--cor-azul-muito-claro);
+  font-weight: var(--peso-medium);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.quiz-ui__passos {
+  display: flex;
+  gap: 4px;
+}
+
+.quiz-ui__passos i {
+  width: 12px;
+  height: 4px;
+  border-radius: 4px;
+  background-color: var(--cor-azul-claro);
+}
+
+.quiz-ui__passos .feito {
+  background-color: var(--cor-agua);
+}
+
+.quiz-ui__passos .atual {
+  width: 22px;
+  background-color: var(--cor-verde-escuro);
+}
+
+.quiz-ui__pergunta-texto {
+  margin-bottom: 14px;
+  font-weight: var(--peso-medium);
+  font-size: 15px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.quiz-ui__opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quiz-ui__opcoes li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--cor-azul-claro);
+  border-radius: 12px;
+  color: var(--cor-azul-acinzentado);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.quiz-ui__radio {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--cor-azul-claro);
+  border-radius: 50%;
+}
+
+/* A alternativa do meio é marcada e desmarcada em ciclo */
+.quiz-ui__opcao--marcada {
+  animation: marcar-opcao 6s 1.2s infinite both;
+}
+
+.quiz-ui__opcao--marcada .quiz-ui__radio {
+  animation: marcar-radio 6s 1.2s infinite both;
+}
+
+@keyframes marcar-opcao {
+  0%, 15% {
+    border-color: var(--cor-azul-claro);
+    background-color: transparent;
+    color: var(--cor-azul-acinzentado);
+  }
+  20%, 92% {
+    border-color: var(--cor-verde-escuro);
+    background-color: #E9F6EA;
+    color: var(--cor-azul);
+  }
+  100% {
+    border-color: var(--cor-azul-claro);
+    background-color: transparent;
+    color: var(--cor-azul-acinzentado);
+  }
+}
+
+@keyframes marcar-radio {
+  0%, 15% {
+    border-color: var(--cor-azul-claro);
+    background-color: transparent;
+    box-shadow: none;
+  }
+  20%, 92% {
+    border-color: var(--cor-verde-escuro);
+    background-color: var(--cor-verde-escuro);
+    box-shadow: inset 0 0 0 3px var(--cor-branco);
+  }
+  100% {
+    border-color: var(--cor-azul-claro);
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+/* Resultado com gráfico de barras */
+.quiz-ui__resultado {
+  right: -14px;
+  bottom: 160px;
+  width: 184px;
+  padding: 16px;
+  animation: subir 0.8s 0.5s var(--curva-suave) both, flutuar 8s 2s ease-in-out infinite;
+}
+
+.quiz-ui__resultado-titulo {
+  margin-bottom: 12px;
+  font-weight: var(--peso-medium);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.quiz-ui__barras {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 64px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--cor-azul-muito-claro);
+}
+
+.quiz-ui__barras span {
+  flex: 1;
+  height: var(--altura);
+  border-radius: 6px 6px 3px 3px;
+  background-color: var(--cor-agua);
+  transform-origin: bottom;
+  animation: crescer 0.9s var(--curva-suave) both;
+}
+
+.quiz-ui__barras span:nth-child(1) { animation-delay: 1s; }
+.quiz-ui__barras span:nth-child(2) { animation-delay: 1.1s; background-color: var(--cor-verde-escuro); }
+.quiz-ui__barras span:nth-child(3) { animation-delay: 1.2s; background-color: var(--cor-azul); }
+.quiz-ui__barras span:nth-child(4) { animation-delay: 1.3s; background-color: var(--cor-azul-claro); }
+
+.quiz-ui__linha {
+  display: block;
+  height: 6px;
+  border-radius: 6px;
+  background-color: var(--cor-azul-muito-claro);
+}
+
+.quiz-ui__linha + .quiz-ui__linha {
+  margin-top: 6px;
+}
+
+.quiz-ui__linha--curta {
+  width: 60%;
+}
+
+/* Selo redondo de "insight" no canto do quadro */
+.quiz-ui__selo {
+  position: absolute;
+  right: 0;
+  bottom: 490px;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: var(--cor-verde-escuro);
+  color: var(--cor-branco);
+  box-shadow: 0 12px 30px rgba(57, 154, 68, 0.45);
+  animation: surgir 0.6s 0.9s var(--curva-suave) both, pulsar 3s 1.6s ease-in-out infinite;
+}
+
+/* Cartão do progresso: "Quiz gratuito" */
+.hero__cartao {
+  left: 30px;
+  bottom: 120px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 284px;
+  padding: 14px 18px 14px 16px;
+  animation: subir 0.8s 0.65s var(--curva-suave) both, flutuar 6s 1.5s ease-in-out infinite;
+}
+
+.hero__cartao-icone {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: var(--cor-azul);
+  color: var(--cor-agua);
+}
+
+.hero__cartao-conteudo {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero__cartao-titulo {
+  color: var(--cor-azul);
+  font-weight: var(--peso-medium);
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.hero__cartao-barra {
+  display: block;
+  height: 6px;
+  margin: 7px 0;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: var(--cor-azul-muito-claro);
+}
+
+/* A barra enche e recomeça do zero (não volta) */
+.hero__cartao-barra span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--cor-agua), var(--cor-verde));
+  transform-origin: left;
+  animation: progresso 5s 1.4s ease-in-out infinite both;
+}
+
+.hero__cartao-texto {
+  color: var(--cor-azul-acinzentado);
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+@keyframes subir {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+@keyframes pulsar {
+  0%, 100% { box-shadow: 0 12px 30px rgba(57, 154, 68, 0.45), 0 0 0 0 rgba(84, 176, 71, 0.5); }
+  50% { box-shadow: 0 12px 30px rgba(57, 154, 68, 0.45), 0 0 0 12px rgba(84, 176, 71, 0); }
+}
+
+@keyframes crescer {
+  from { transform: scaleY(0); }
+}
+
+@keyframes progresso {
+  0% { transform: scaleX(0); opacity: 1; }
+  80%, 92% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+/* Quem pede menos movimento vê a ilustração parada, já no estado "preenchido" */
+@media (prefers-reduced-motion: reduce) {
+  .hero__cartao-barra span {
+    animation: none;
+    transform: scaleX(0.7);
+  }
+
+  .quiz-ui__opcao--marcada,
+  .quiz-ui__opcao--marcada .quiz-ui__radio {
+    animation: none;
+  }
+
+  .quiz-ui__opcao--marcada {
+    border-color: var(--cor-verde-escuro);
+    background-color: #E9F6EA;
+    color: var(--cor-azul);
+  }
+
+  .quiz-ui__opcao--marcada .quiz-ui__radio {
+    border-color: var(--cor-verde-escuro);
+    background-color: var(--cor-verde-escuro);
+    box-shadow: inset 0 0 0 3px var(--cor-branco);
+  }
+}
+
+@media (max-width: 359px) {
+  .hero {
+    --escala: 0.55;
+  }
+}
+
+@media (min-width: 420px) {
+  .hero {
+    --escala: 0.7;
+  }
+}
+
+@media (min-width: 600px) {
+  .hero {
+    --escala: 0.9;
+  }
+
+  .hero__titulo {
+    font-size: var(--texto-48);
+  }
+
+  .hero__texto,
+  .hero__lista li {
+    font-size: var(--texto-18);
+  }
+}
+
+/* Desktop: texto à esquerda e ilustração à direita */
+@media (min-width: 1024px) {
+  .cabecalho {
+    min-height: 800px;
+    padding: 28px 32px 0;
+    background:
+      linear-gradient(90deg, rgba(30, 39, 73, 0.35) 0%, rgba(30, 39, 73, 0) 55%),
+      var(--cor-azul) url("../assets/img/hero-fundo.jpg") center / cover no-repeat;
+  }
+
+  .navegacao {
+    top: 28px;
+    width: min(100% - 64px, var(--largura-cabecalho));
+  }
+
+  .navegacao__logo img {
+    width: 180px;
+  }
+
+  .hero {
+    --escala: 0.82;
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) calc(560px * var(--escala));
+    align-items: center;
+    gap: var(--espaco-32);
+    width: 100%;
+    max-width: var(--largura-conteudo);
+    margin-inline: auto;
+    padding-bottom: var(--espaco-32);
+  }
+
+  .hero__conteudo {
+    align-items: flex-start;
+    gap: var(--espaco-32);
+    max-width: 600px;
+    padding-block: var(--espaco-48);
+    text-align: left;
+  }
+
+  .hero__titulo {
+    font-size: var(--texto-60);
+    line-height: var(--linha-justa);
+  }
+
+  .hero__texto {
+    font-size: var(--texto-20);
+    line-height: var(--linha-texto);
+  }
+
+  .hero__lista {
+    gap: 14px;
+  }
+
+  .hero__cta {
+    font-size: var(--texto-20);
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero {
+    --escala: 1;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   7. Dobra 2 — Por que responder ao quiz?
+   -------------------------------------------------------------------------- */
+.motivos__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espaco-48);
+  max-width: var(--largura-conteudo);
+  margin-inline: auto;
+}
+
+.motivos__cabecalho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espaco-24);
+  text-align: center;
+}
+
+.motivos__lista {
+  display: grid;
+  gap: var(--espaco-24);
+  width: 100%;
+}
+
+.motivo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-16);
+  padding: var(--espaco-32);
+  border: var(--borda-azul-claro);
+  border-radius: var(--raio-32);
+  background-color: var(--cor-branco);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Com a entrada ao rolar, junta as duas transições (a do .revelar e a do hover) */
+.js .motivo.revelar {
+  transition: opacity 0.7s ease, transform 0.8s var(--curva-suave), box-shadow 0.3s ease, border-color 0.3s ease;
+  transition-delay: var(--atraso, 0s), var(--atraso, 0s), 0s, 0s;
+}
+
+.motivo:hover {
+  border-color: var(--cor-agua);
+  box-shadow: var(--sombra-menu);
+}
+
+.js .motivo.esta-visivel:hover {
+  transform: translateY(-6px);
+  transition-delay: 0s;
+}
+
+.motivo__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--espaco-8);
+}
+
+.motivo__icone {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border: var(--borda-verde);
+  border-radius: 50%;
+  color: var(--cor-verde-escuro);
+}
+
+.motivo__numero {
+  color: var(--cor-agua);
+  font-weight: var(--peso-light);
+  font-size: var(--texto-32);
+  line-height: 1;
+  letter-spacing: var(--letra-titulo);
+}
+
+.motivo__titulo {
+  font-weight: var(--peso-medium);
+  font-size: var(--texto-20);
+  line-height: 1.3;
+}
+
+.motivo__texto {
+  font-size: var(--texto-16);
+  line-height: var(--linha-texto);
+}
+
+/* 4º card em destaque: análise da MooveSync */
+.motivo--destaque {
+  border-color: var(--cor-azul);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(107, 192, 172, 0.45), rgba(107, 192, 172, 0) 60%),
+    var(--cor-azul);
+}
+
+.motivo--destaque:hover {
+  border-color: var(--cor-azul);
+}
+
+.motivo--destaque .motivo__icone {
+  border-color: var(--cor-agua);
+  color: var(--cor-agua);
+}
+
+.motivo--destaque .motivo__titulo {
+  color: var(--cor-branco);
+}
+
+.motivo--destaque .motivo__texto {
+  color: var(--cor-azul-claro);
+}
+
+.motivos__cta {
+  padding: 12px 32px;
+  font-size: var(--texto-18);
+  line-height: var(--linha-28);
+}
+
+@media (min-width: 640px) {
+  .motivos__lista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .motivos__container {
+    gap: var(--espaco-64);
+  }
+
+  .motivos__lista {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   8. Dobra 3 — Conheça a MooveSync (fundo verde-água, como "Soluções" no site)
+   -------------------------------------------------------------------------- */
+.conheca {
+  background-color: var(--cor-agua);
+}
+
+.conheca__container {
+  display: grid;
+  gap: var(--espaco-48);
+  max-width: var(--largura-conteudo);
+  margin-inline: auto;
+}
+
+.conheca__midia {
+  position: relative;
+  padding-bottom: var(--espaco-32); /* espaço para o selo que sai da foto */
+}
+
+.conheca__imagem {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--raio-32);
+  box-shadow: var(--sombra-cartao);
+}
+
+/* Selo "+10 anos" sobre a foto */
+.conheca__selo {
+  position: absolute;
+  left: var(--espaco-24);
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-16);
+  max-width: calc(100% - 48px);
+  padding: 14px 24px;
+  border-radius: var(--raio-28);
+  background-color: var(--cor-branco);
+  box-shadow: var(--sombra-cartao);
+}
+
+.conheca__selo strong {
+  flex-shrink: 0;
+  color: var(--cor-azul);
+  font-weight: var(--peso-light);
+  font-size: var(--texto-32);
+  line-height: 1;
+  letter-spacing: var(--letra-titulo);
+}
+
+.conheca__selo span {
+  color: var(--cor-azul-acinzentado);
+  font-size: var(--texto-14);
+  line-height: 1.35;
+}
+
+.conheca__conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espaco-24);
+}
+
+.conheca .texto-secao {
+  color: var(--cor-azul); /* contraste do texto sobre o verde-água */
+}
+
+.conheca .botao {
+  margin-top: var(--espaco-8);
+  padding: 12px 40px;
+}
+
+@media (min-width: 1024px) {
+  .conheca__container {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--espaco-80);
+  }
+
+  .conheca__imagem {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--raio-50);
+  }
+
+  .conheca__selo {
+    left: auto;
+    right: calc(var(--espaco-32) * -1);
+    bottom: var(--espaco-64);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--espaco-8);
+    max-width: 220px;
+    padding: 24px;
+  }
+
+  .conheca__selo strong {
+    font-size: var(--texto-40);
+  }
+
+  .conheca__midia {
+    padding-bottom: 0;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   9. Formulário de acesso ao quiz (fundo como o "Contato" do site)
+   -------------------------------------------------------------------------- */
+.inscricao {
+  background-color: var(--cor-azul-muito-claro);
+}
+
+.inscricao__container {
+  display: grid;
+  gap: var(--espaco-48);
+  max-width: var(--largura-larga);
+  margin-inline: auto;
+}
+
+.inscricao__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-24);
+}
+
+.inscricao__titulo {
+  font-size: var(--texto-32);
+  line-height: 1.15;
+}
+
+.inscricao__destaques {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.inscricao__destaques li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espaco-8);
+  padding: 8px 16px 8px 12px;
+  border-radius: var(--raio-redondo);
+  background-color: var(--cor-branco);
+  color: var(--cor-azul);
+  font-weight: var(--peso-medium);
+  font-size: var(--texto-14);
+  line-height: 20px;
+}
+
+.inscricao__destaques svg {
+  flex-shrink: 0;
+  color: var(--cor-verde-escuro);
+}
+
+.inscricao__formulario {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-24);
+  padding: var(--espaco-24);
+  box-shadow: 0 20px 60px rgba(30, 39, 73, 0.08);
+}
+
+.inscricao__campos {
+  display: grid;
+  gap: 16px;
+}
+
+.inscricao__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inscricao__rotulo {
+  padding-left: 4px;
+  color: var(--cor-azul);
+  font-weight: var(--peso-medium);
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Caixa de autorização (LGPD) */
+.inscricao__aceite {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inscricao__aceite .campo-erro {
+  padding-left: 32px;
+}
+
+.consentimento {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--cor-azul-acinzentado);
+  font-size: var(--texto-14);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.consentimento__caixa {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  border: 1.5px solid var(--cor-verde-escuro);
+  border-radius: 6px;
+  background-color: var(--cor-branco);
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: background-color var(--transicao), border-color var(--transicao);
+}
+
+.consentimento__caixa:checked {
+  border-color: var(--cor-verde-escuro);
+  background: var(--cor-verde-escuro) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='m5 10.4 3.2 3.2L15 6.6' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px no-repeat;
+}
+
+.consentimento__caixa[aria-invalid="true"] {
+  border-color: var(--cor-erro);
+}
+
+.inscricao__botao {
+  width: 100%;
+  padding: 12px 30px;
+  font-size: var(--texto-18);
+  line-height: var(--linha-28);
+}
+
+@media (min-width: 640px) {
+  .inscricao__formulario {
+    padding: 40px;
+  }
+
+  .inscricao__campos {
+    gap: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .inscricao__titulo {
+    font-size: var(--texto-40);
+    line-height: 1.1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .inscricao__container {
+    grid-template-columns: 5fr 6fr;
+    align-items: center;
+    gap: var(--espaco-64);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   10. Rodapé — idêntico ao do site
+   -------------------------------------------------------------------------- */
+.rodape {
+  padding: var(--espaco-120) 30px;
+  background-color: var(--cor-azul);
+  color: var(--cor-azul-claro);
+  line-height: 24px;
+  letter-spacing: -0.02em;
+}
+
+.rodape__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-64);
+  width: 100%;
+  max-width: var(--largura-larga);
+  margin-inline: auto;
+}
+
+.rodape__coluna {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-32);
+}
+
+.rodape__coluna--marca {
+  gap: var(--espaco-48);
+}
+
+.rodape__marca {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-24);
+}
+
+.rodape__slogan,
+.rodape__texto {
+  max-width: 480px;
+}
+
+.rodape__contatos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-16);
+}
+
+.rodape__contato {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--cor-branco);
+  font-size: clamp(0.875rem, 3vw + 0.25rem, 1rem);
+  transition: color var(--transicao);
+}
+
+.rodape__contato img {
+  flex-shrink: 0;
+}
+
+.rodape__contato:hover {
+  color: var(--cor-agua);
+}
+
+.rodape__titulo {
+  color: var(--cor-branco);
+  font-size: var(--texto-24);
+  line-height: 32px;
+}
+
+.rodape__subtitulo {
+  display: block;
+  color: var(--cor-azul-claro);
+  font-size: var(--texto-18);
+  line-height: var(--linha-28);
+}
+
+.rodape__conteudos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-16);
+}
+
+.rodape__redes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-16);
+}
+
+.rodape__redes-lista {
+  display: flex;
+  gap: var(--espaco-32);
+}
+
+.rodape__rede {
+  display: block;
+  border-radius: 50%;
+  transition: opacity var(--transicao);
+}
+
+.rodape__rede:hover {
+  opacity: 0.8;
+}
+
+@media (min-width: 768px) {
+  .rodape__container {
+    flex-direction: row;
+  }
+
+  .rodape__coluna {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .rodape__coluna--marca {
+    justify-content: flex-start;
+    gap: var(--espaco-64);
+  }
+}
